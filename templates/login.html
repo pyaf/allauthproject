@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Twilio Project</title>
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+    </head>
+
+  <body>
+<div class="jumbotron">
+
+    <div class="container">
+
+      <div class="col-sm-6 col-sm-offset-3">
+
+
+      {% block content %}
+
+      {% if form.non_field_errors %}
+      <div id="messages">
+        {% for message in form.non_field_errors %}
+        <div class="alert alert-dismissible alert-danger"
+             role="alert">
+          <button type="button" class="close" data-dismiss="alert"
+                  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message|escape }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <form class="account-register form-narrow" id="login_form" method="POST"
+            action="" >
+        <h3>Login</h3>
+
+        {% csrf_token %}
+
+        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+          <label class="control-label" for="id_username">Username</label>
+              <input class="form-control input-lg" id="id_username" maxlength="150" name="username" type="text" required />
+          <div class="error-block">{{ form.username.errors }}</div>
+        </div>
+
+
+        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+          <label class="control-label" for="id_password">Password</label>
+          <div class="input-group input-group-lg">
+
+          </div>
+          <input class="form-control input-lg" id="id_password" name="password" type="password" required />
+          <div class="error-block">{{ form.password.errors }}</div>
+        </div>
+
+
+        <button type="submit" name="register"
+                class="btn btn-primary btn-lg btn-block text-uppercase">
+          Login
+        </button>
+
+        <p class="text-center">
+        Don't have an account? <a href="/">Register</a>
+        </p>
+      </form>
+
+      {% endblock %}
+</div>
+    </div> <!-- /container -->
+
+  </div>
+
+  </body>
+</html>
