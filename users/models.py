@@ -10,18 +10,19 @@ from .manager import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(_('username'), max_length=130, unique=True)
     full_name = models.CharField(_('full name'), max_length=130, blank=True)
+    email = models.EmailField(_('email-id'), max_length=50, blank=True)
     is_staff = models.BooleanField(_('is_staff'), default=False)
     is_active = models.BooleanField(_('is_active'), default=True)
     date_joined = models.DateField(_("date_joined"), default=date.today)
     phone_number_verified = models.BooleanField(default=False)
     change_pw = models.BooleanField(default=True)
-    phone_number = models.BigIntegerField(unique=True)
+    phone_number = models.BigIntegerField(blank=True)
     country_code = models.IntegerField()
 
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['full_name', 'phone_number', 'country_code']
+    REQUIRED_FIELDS = ['full_name',]
 
     class Meta:
         ordering = ('username',)
