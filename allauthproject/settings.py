@@ -67,6 +67,11 @@ ROOT_URLCONF = 'allauthproject.urls'
 
 AUTH_USER_MODEL = 'users.User'
 
+ACCOUNT_USERNAME_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_QUERY_EMAIL = True
+LOGIN_REDIRECT_URL = "/dashboard"
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
