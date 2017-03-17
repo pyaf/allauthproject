@@ -8,6 +8,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 import json
 from .forms import RegisterForm, LoginForm, PhoneVerificationForm
+from .models import User
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 class RegisterView(SuccessMessageMixin, FormView):
     template_name = 'index.html'
@@ -104,11 +108,8 @@ class LoginView(FormView):
 class DashboardView(SuccessMessageMixin, View):
     template_name = 'dashboard.html'
 
-    # def get(self, request):
-    #     if request.user.phone_number_verified:
-    #         messages.add_message(self.request, messages.INFO,
-    #                             "Verified User Acccount")
-    #     else:
-    #         messages.add_message(self.request, messages.INFO,
-    #                             "User Not verified.")
-    #     return render(self.request, self.template_name, {})
+    def get(self, request):
+        context = {
+                'user': request.user,
+        }
+        return render(self.request, self.template_name, context)

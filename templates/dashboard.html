@@ -25,10 +25,27 @@
       </div>
       {% endif %}
     <h1>Yahoo logged in!</h1>
+
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <td>
+            <img src="{{user.profile_picture}}" alt="Smiley face" >
+          </td>
+          <td>
+            Name : {{user.full_name}}
+            <br>
+            Email : {{user.email}}
+            <br>
+            Username : {{user.get_username}}</td>
+        </tr>
+      </table>
+</div>
     <br><br>
     <a href="/logout" class="btn btn-danger">Logout</a>
   </div>
   </div>
   <script src="/static/js/jquery.min.js" charset="utf-8"></script>
+  <script src="/static/js/bootstrap.min.js" charset="utf-8"></script>
 </body>
 </html>

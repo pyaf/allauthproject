@@ -65,13 +65,6 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'allauthproject.urls'
 
-AUTH_USER_MODEL = 'users.User'
-
-ACCOUNT_USERNAME_REQUIRED = True
-# ACCOUNT_EMAIL_VERIFICATION = "none"
-SOCIALACCOUNT_QUERY_EMAIL = True
-LOGIN_REDIRECT_URL = "/dashboard"
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -118,14 +111,50 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTH_USER_MODEL = 'users.User'
+
+ACCOUNT_USERNAME_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_QUERY_EMAIL = True
+LOGIN_REDIRECT_URL = "/dashboard/"
+ACCOUNT_EMAIL_REQUIRED=False
+ACCOUNT_USERNAME_REQURIED=True
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.RegisterForm'
+}
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        # 'LOCALE_FUNC': '',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.4',
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
