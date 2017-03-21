@@ -41,8 +41,7 @@ def save_profile(sender, instance, **kwargs):
     print(instance)
     instance.user.full_name = instance.extra_data['name']
     uid = instance.extra_data['id']
-    instance.user.profile_picture = "http://graph.facebook.com/" + uid + "/picture?type=large"
-    print("lolalol")
+    instance.user.profile_picture = instance.get_avatar_url()
     instance.user.save()
 
 post_save.connect(save_profile, sender=SocialAccount)
