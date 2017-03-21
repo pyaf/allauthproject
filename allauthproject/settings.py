@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.twitter',
 
 ]
 
@@ -134,7 +133,7 @@ ACCOUNT_FORMS = {
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'SCOPE': ['email', 'public_profile'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
         'FIELDS': [
             'id',

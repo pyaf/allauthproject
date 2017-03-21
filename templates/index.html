@@ -4,11 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>HomePage</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <title>Home</title>
 </head>
 <body>
-  <a href="/login">Login</a>
-  <br>
-  <a href="/signup">Signup</a>
+  <div class="jumbotron">
+    <div class="container" >
+      {% if messages %}
+      <div id="messages">
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-info"
+             role="alert">
+          <button type="button" class="close" data-dismiss="alert"
+                  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message|escape }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="row">
+
+    <div class="center-block" style="width:500px;">
+      <h3>Allauth Project</h3>
+      <h4>A small django website with Facebook and Google+ login using <a href="https://django-allauth.readthedocs.io">django-allauth</a></h4>
+      <!-- <h4>For details visit my <a href="https://rishabhiitbhu.wordpress.com/2017/03/15/twilio-project/">blog</a></h4> -->
+    <br>
+    <br>
+    <a href="/signup" class="btn btn-default">Register</a>
+    <a href="/login" class="btn btn-info">Login</a>
+
+  </div>
+  </div>
+  </div>
+  <footer class="navbar-fixed-bottom">
+    <div class="center-block" style="width:500px;">
+    <p>Made with <3 by <a href="https://github.com/rishabhiitbhu">Rishabh Agrahari</a></p>
+    </div>
+  </footer>
+</div>
+  <script src="/static/js/jquery.min.js" charset="utf-8"></script>
+  <script src="/static/js/bootstrap.min.js" charset="utf-8"></script>
 </body>
 </html>
