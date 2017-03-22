@@ -1,10 +1,10 @@
-#AllauthProject
+# AllauthProject
 
 A ready-made project for social logins with custom user model.
 
 ## Features
 
-- Login with Facebook, Google+, Twitter.
+- Login with Facebook, Google+.
 - Custom User model.
 
 ## How to Use
