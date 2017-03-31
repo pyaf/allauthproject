@@ -4,7 +4,7 @@ A ready-made project for social logins with custom user model.
 
 ## Features
 
-- Login with Facebook, Google+.
+- Login with Facebook and Google+.
 - Custom User model.
 
 ## How to Use
